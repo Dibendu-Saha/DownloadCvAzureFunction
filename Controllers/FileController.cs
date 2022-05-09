@@ -11,7 +11,7 @@ namespace PortfolioDownloadCvAzureFunction.Controllers
         public async Task<FileResult> DownloadFile()
         {
             string fileName = "CV_Dibendu_Saha.pdf";
-            var connectionStr = "DefaultEndpointsProtocol=https;AccountName=myportfoliostorageacc;AccountKey=9yuDvmq3+CFGcTRwufrk/v6Gfh9bYNmlp7ZfVcSNJhzkpX2rCysJxR/YrNbbiJTaZjMUdf5Ej1Vld4VL18n/FA==;EndpointSuffix=core.windows.net";
+            var connectionStr = System.Environment.GetEnvironmentVariable("AzureWebJobsStorage");
             var container = new BlobContainerClient(connectionStr, "app-files");
 
             var blob = container.GetBlobClient(fileName);
