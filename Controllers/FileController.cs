@@ -19,7 +19,6 @@ namespace PortfolioDownloadCvAzureFunction.Controllers
             try
             {
                 var res = await blob.DownloadAsync();
-                byte[] filebytes = Encoding.UTF8.GetBytes(fileName);
                 return File(res.Value.Content, res.Value.ContentType, fileName);
             }
             catch (Exception ex)
